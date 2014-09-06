@@ -1,0 +1,53 @@
+[YOUR FULL NAME] ([Unity ID])
+-----------------------
+Task 1 (zfunction)
+Input: 0xaabbccdd
+Output: 0xa800cdd0
+
+Task 2 (printsegaddress)
+Current: etext[0x0000dae6]=0x43280000, edata[0x0000f540]=0x00000000, ebss[0x00019578]=0x00019b76
+Preceding: etext[0x0000dae2]=0xc35dc889, edata[0x0000f53c]=0x00000064, ebss[0x00019574]=0x00000000
+After: etext[0x0000daea]=0x30354353, edata[0x0000f544]=0x00000001, ebss[0x0001957c]=0x00086a84
+
+Task 3 (printtos)
+Before[0x00ffefd0]: 0x00000000
+After[0x00ffefc8]: 0x00ffefec
+	element[0x00ffefc4]: 0x00000004
+	element[0x00ffefc0]: 0x00000002
+	element[0x00ffefbc]: 0x00005bd9
+	element[0x00ffefb8]: 0x00005bd9
+
+Task 4 (printprocstks)
+# Filter: 10
+Process [proc A]
+	pid: 48
+	priority: 30
+	base: 0x00ffdff8
+	limit: 0x00ffcffc
+	len: 4096
+	pointer: 0x 00ffdf34
+Process [main]
+	pid: 49
+	priority: 20
+	base: 0x00ffeff8
+	limit: 0x00ffdffc
+	len: 4096
+	pointer: 0x 00ffefb0
+
+Task 5 (printsyssummary)
+Process [pid:49]
+	Syscall: sys_resume, count: 1, average execution time: 0 (ms)
+	Syscall: sys_sleep, count: 1, average execution time: 10000 (ms)
+	Syscall: sys_sleep10, count: 1, average execution time: 10000 (ms)
+Process [pid:47]
+	Syscall: sys_freemem, count: 1, average execution time: 0 (ms)
+	Syscall: sys_getpid, count: 1, average execution time: 0 (ms)
+	Syscall: sys_kill, count: 1, average execution time: 0 (ms)
+	Syscall: sys_send, count: 1, average execution time: 0 (ms)
+	Syscall: sys_sleep, count: 4, average execution time: 1000 (ms)
+	Syscall: sys_sleep10, count: 4, average execution time: 1000 (ms)
+Process [pid:48]
+	Syscall: sys_freemem, count: 1, average execution time: 0 (ms)
+	Syscall: sys_getpid, count: 1, average execution time: 0 (ms)
+	Syscall: sys_kill, count: 1, average execution time: 0 (ms)
+	Syscall: sys_send, count: 1, average execution time: 0 (ms)

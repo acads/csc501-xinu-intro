@@ -1,0 +1,11 @@
+<HTML>
+<HEAD>
+<TITLE>404 File Not Found</TITLE>
+</HEAD>
+<BODY>
+<H1>File Not Found</H1>
+<P>The file that you requested does not exist. Please go back and 
+send a note to the author of the referring page to fix the bad link.
+</P>
+</BODY>
+</HTML>

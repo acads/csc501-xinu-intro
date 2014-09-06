@@ -1,0 +1,223 @@
+Hello World, Xinu lives
+
+Task 1 (zfunction)
+Input: 0xaabbccdd
+Output: 0xa800cdd0
+
+Task 1 (zfunction)
+Input: 0xaaffffdd
+Output: 0xac01fdd0
+
+Task 2 (printsegaddress)
+Current: etext[0x00009cde]: 0xc35dc889, edata[0x0000b5b8]: 0x00000064, end[0x00013c54]: 0x00000000
+Before: etext[0x00009cda]: 0xf875c084, edata[0x0000b5b4]: 0x000a171a, end[0x00013c50]: 0x00000000
+After: etext[0x00009ce2]: 0x43280000, edata[0x0000b5bc]: 0x00000000, end[0x00013c58]: 0x00014256
+
+Task 3 (printtos)
+Before[0x00ffefc0]: 0xaaffffdd
+After[0x00ffefb8]: 0x00ffefec
+After[0x00ffefa0]: 0x0000ac8b
+	element[0x00ffefac]: 0x00000000
+	element[0x00ffefa8]: 0x00000000
+	element[0x00ffefa4]: 0x00ffefa8
+	element[0x00ffefa0]: 0x00ffefec
+
+Task 4 (printprocstks)
+# Filter: 9
+Process [main]
+	pid: 49
+	priority: 20
+	base: 0x00ffeff8
+	limit: 0x00ffdffc
+	len: 4096
+	pointer: 0x00ffefa0
+
+Process [proc10]
+	pid: 48
+	priority: 10
+	base: 0x00ffdff8
+	limit: 0x00ffcffc
+	len: 4096
+	pointer: 0x00ffdfc4
+
+Process [proc20]
+	pid: 47
+	priority: 20
+	base: 0x00ffcff8
+	limit: 0x00ffbffc
+	len: 4096
+	pointer: 0x00ffcf24
+
+Process [proc30]
+	pid: 46
+	priority: 30
+	base: 0x00ffbff8
+	limit: 0x00ffaffc
+	len: 4096
+	pointer: 0x00ffbf54
+
+Process [proc40]
+	pid: 45
+	priority: 40
+	base: 0x00ffaff8
+	limit: 0x00ff9ffc
+	len: 4096
+	pointer: 0x00ffaf54
+
+Process [proc50]
+	pid: 44
+	priority: 50
+	base: 0x00ff9ff8
+	limit: 0x00ff8ffc
+	len: 4096
+	pointer: 0x00ff9f54
+
+sp ffbfb4 fp ffbfcc proc->pbase ffbff8
+DATA (00ffbfb4) 000061fc (25084)
+DATA (00ffbfb8) 00000000 (0)
+DATA (00ffbfbc) 00004e5e (20062)
+DATA (00ffbfc0) 00000029 (41)
+DATA (00ffbfc4) 00000000 (0)
+DATA (00ffbfc8) 00000000 (0)
+
+FP   (00ffbfcc) 00ffbfec (16760812)
+RET  0x46a8
+DATA (00ffbfd4) 00000029 (41)
+DATA (00ffbfd8) 00000000 (0)
+DATA (00ffbfdc) 00ffbfec (16760812)
+DATA (00ffbfe0) 0000469d (18077)
+DATA (00ffbfe4) 0000081c (2076)
+DATA (00ffbfe8) 00000000 (0)
+
+FP   (00ffbfec) 00ffbff8 (16760824)
+RET  0x7b14
+DATA (00ffbff4) 0000001e (30)
+MAGIC (should be aaa9): aaa9
+proc_H: sem count 1
+proc_H: sem count 2
+proc_H: sem count 3
+proc_H: sem count 4
+proc_H: sem count 5
+main: procH is dead
+main: procE is dead
+procA: new priority: 11
+procC: I just woke up!
+main: procC is dead
+procD: dummyd sent: 40
+main: procD is dead
+procA: B just woke me up!
+procB: msg from procA: 43
+main: procA is dead
+main: procB is dead
+main: all dead
+Task 5 (printsyssummary)
+Process [pname: proc_t5_H, pid: 37]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: scount, count: 5, average execution time: 0
+	Syscall: screate, count: 5, average execution time: 0
+	Syscall: sdelete, count: 5, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: setnok, count: 1, average execution time: 0
+	Syscall: sreset, count: 5, average execution time: 0
+Process [pname: proc_t5_E, pid: 38]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 2, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: setnok, count: 1, average execution time: 0
+	Syscall: suspend, count: 1, average execution time: 6
+Process [pname: dd, pid: 39]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 2, average execution time: 0
+Process [pname: proc_t5_D, pid: 40]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: recvclr, count: 1, average execution time: 0
+	Syscall: resume, count: 2, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: setnok, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 3000
+Process [pname: proc_t5_C, pid: 41]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: setnok, count: 1, average execution time: 0
+	Syscall: sleep1000, count: 1, average execution time: 10
+	Syscall: stacktrace, count: 1, average execution time: 19
+	Syscall: suspend, count: 1, average execution time: 0
+Process [pname: proc_t5_B, pid: 42]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: receive, count: 1, average execution time: 7027
+	Syscall: send, count: 1, average execution time: 10
+	Syscall: setnok, count: 1, average execution time: 0
+	Syscall: sleep, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 3000
+	Syscall: sleep100, count: 1, average execution time: 120
+	Syscall: unsleep, count: 1, average execution time: 0
+Process [pname: proc_t5_A, pid: 43]
+	Syscall: chprio, count: 1, average execution time: 0
+	Syscall: freemem, count: 2, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: getprio, count: 1, average execution time: 1
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 2, average execution time: 1
+	Syscall: setnok, count: 1, average execution time: 0
+	Syscall: sleep, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 10000
+Process [pname: proc50, pid: 44]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: sleep100, count: 1, average execution time: 500
+	Syscall: sleep1000, count: 1, average execution time: 50
+Process [pname: proc40, pid: 45]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: sleep100, count: 1, average execution time: 400
+	Syscall: sleep1000, count: 1, average execution time: 40
+Process [pname: proc30, pid: 46]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 3000
+	Syscall: sleep1000, count: 1, average execution time: 30
+Process [pname: proc20, pid: 47]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: sleep, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 20000
+	Syscall: sleep1000, count: 1, average execution time: 20
+Process [pname: proc10, pid: 48]
+	Syscall: freemem, count: 1, average execution time: 0
+	Syscall: getpid, count: 1, average execution time: 0
+	Syscall: kill, count: 1, average execution time: 0
+	Syscall: send, count: 1, average execution time: 0
+	Syscall: sleep, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 10000
+	Syscall: sleep100, count: 1, average execution time: 100
+Process [pname: main, pid: 49]
+	Syscall: getpid, count: 6, average execution time: 0
+	Syscall: receive, count: 6, average execution time: 1686
+	Syscall: resume, count: 17, average execution time: 1
+	Syscall: sleep, count: 1, average execution time: 0
+	Syscall: sleep10, count: 1, average execution time: 20000
+
+
+
+All user processes have completed.
+
+

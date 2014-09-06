@@ -1,0 +1,108 @@
+
+1.Assuming the XINU text begins at address 0x0, draw a rough diagram of XINU's 
+memory layout with addresses derived from your experimental measurements.Include
+the information you uncovered from running your version of printsegaddress() and
+printprocstks().
+                                        
+                                                       PROC[MAIN]                            PROC[NULL]
+ANS                             
+                                                LIMIT       ESP           EBP      LIMIT       ESP       EBP 
+     0      etext=8546          edata=AA40 end [16769020] [16773060]   [16773112] [16773120] [16777020] [16777212]
+     |           |                     |    |    |           |             |         |          |          |
+     V___________V____________ ________V____V____V___________V_____________V_________V__________V__________V__________
+     |  Text     | Data       | BSS    | HEAP|    Stack 1                  |       STACK 2                 |   FREE   |
+     |___________|____________|________|_____|_____________________________|_______________________________|__________|    
+
+
+
+NOTE: The values indicated in the above diagram are the values got by executing the
+function printsegaddress() printprocstks()
+
+
+2.What is the difference in stack top address before and after calling printtos()?
+Draw a diagram to illustrate what are the contents of the items pushed into the 
+stack between these two time points.  
+
+ANS The address in the stack top address before calling printtos() function is ffefd0 
+     The address in the stack top address after calling printtos() function is ffefa0
+     The instruction pointer EIP and the EBP get pushed onto stack between these two time points
+    
+
+
+
+ 
+3.Which byte order is adopted in the host machine that we are using? How did you find out?
+
+ANS: ->  The byte Order adopted in our host machine is 'Little endian' ,as the the first value
+      stored in the memory is the least significant value. 
+       
+     -> int get_byteorder()
+       {
+         union {
+                long l;
+                char c[4];
+               } test;
+         test.l = 1;
+         if( test.c[3] && !test.c[2] && !test.c[1] && !test.c[0] )
+                return ORDER_BIGENDIAN;
+
+         if( !test.c[3] && !test.c[2] && !test.c[1] && test.c[0] )
+                return ORDER_LITTLEENDIAN;
+ 
+          return ORDER_UNKNOWN;
+        }
+               The above function which tests for byte oedering was incorporated and 
+               tested on XINU platform , and on running it was found that 'LITTLE ENDIAN'
+               byte ordering was followed by XINU Os 
+
+
+
+
+
+4.Briefly describe the mov, push, pusha, pop, and popa instructions in the x86.
+
+ANS
+  a) mov 
+    
+    -> A mov instruction in x86 is primarily used to move the data from source
+       to destination . The general form of the instruction is as follows
+       
+       mov destination , source
+       
+    -> The restrictions of this instruction is as follows
+       * The operands have to be of the same size 
+       * Both the operands cannot be memory operands.
+
+  b) push
+
+    ->  The push instructions move data onto the 80x86 hardware stack(80386 in this case)
+        ,these are mainly stored in general purpose registers.
+    
+    ->  With each element pushed on to the stack the Stack pointer (SP) is decremented 
+        by 4(in XINU) , the SP points to the current element in the stack.
+ 
+  c) pop
+
+    -> Pop instruction in x86 performs the exact opposite operation performed by 
+       push instruction the pop instructions move data from the stack to memory 
+       or to a register
+
+    -> With each element popped from the stack the stack pointer (SP) is incremented
+       by 4(in XINU) .
+
+  d) pusha
+ 
+    -> This instruction is primarily used for 16 bit registers (in 80286) and is 
+       used to push the registers in a particular order (ax,cx,dx,bx,sp,bp,si,di) 
+
+    -> This instruction however does not push the flags or segment registers.   
+
+
+   e) popa
+ 
+    -> This instruction performs the exact opposite operation to that performed by
+       pusha i.e it use to remove the data in a particular order (di,si,bp,sp,bx,dx,cx,ax)
+
+    
+  
+
